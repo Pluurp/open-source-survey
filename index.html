@@ -15,11 +15,82 @@
 
     <!-- Inclure le thème par défaut de SurveyJS -->
     <link rel="stylesheet" href="https://unpkg.com/survey-core@1.12.3/defaultV2.min.css" />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Styles personnalisés -->
+    <style>
+        /* Styles de base de la page */
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #surveyContainer {
+            width: 60%;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        /* Style pour les titres et descriptions */
+        .sv-title {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sv-description {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Style pour les boutons */
+        .sv-complete-btn {
+            background-color: #0c5eac;
+            color: white;
+            font-size: 18px;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .sv-prev-btn, .sv-next-btn {
+            background-color: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Style pour les éléments interactifs (choix, ratings) */
+        .sv-boolean {
+            margin-bottom: 10px;
+        }
+
+        .sv-question__content {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Conteneur pour afficher le sondage -->
-    <div id="surveyElement" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; min-height: 100%; height:100%"></div>
+    <div id="surveyContainer"></div>
 
     <!-- Scripts pour configurer et afficher le sondage -->
     <script>
@@ -55,48 +126,3 @@
                   "rateMax": 7
                 },
                 {
-                  "type": "ranking",
-                  "name": "question4",
-                  "title": "test 4",
-                  "choices": [
-                    { "value": "Item 1", "text": "a" },
-                    { "value": "Item 2", "text": "b" },
-                    { "value": "Item 3", "text": "c" },
-                    { "value": "Item 4", "text": "d" }
-                  ]
-                }
-              ]
-            }
-          ],
-          "navigateToUrl": "https://www.europeansaasbenchmark.com/"
-        };
-
-        const themeJson = {
-          "themeName": "sharp",
-          "colorPalette": "light",
-          "isPanelless": true,
-          "backgroundImage": "",
-          "backgroundOpacity": 1,
-          "backgroundImageAttachment": "scroll",
-          "backgroundImageFit": "cover",
-          "cssVariables": {
-            "--sjs-corner-radius": "4px",
-            "--sjs-base-unit": "8px",
-            "--sjs-shadow-small": "0px 0px 0px 1px rgba(0, 0, 0, 0.2)",
-            "--sjs-general-backcolor": "rgba(255, 255, 255, 1)",
-            "--sjs-primary-backcolor": "#0c5eac",
-            "--sjs-primary-forecolor": "rgba(255, 255, 255, 1)"
-          },
-          "headerView": "basic"
-        };
-
-        const survey = new Survey.Model(json);
-        survey.applyTheme(themeJson);
-        survey.onComplete.add((sender, options) => {
-            console.log(JSON.stringify(sender.data, null, 3));
-        });
-
-        $("#surveyElement").Survey({ model: survey });
-    </script>
-</body>
-</html>
