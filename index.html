@@ -12,7 +12,7 @@
   <!-- Inclure le thème par défaut de SurveyJS -->
   <link href="https://unpkg.com/survey-core/defaultV2.min.css" rel="stylesheet"/>
 
-  <!-- Ajouter des styles personnalisés -->
+  <!-- Ajouter des styles pour le conteneur du sondage -->
   <style>
     body {
       background-color: #f4f7f6;
@@ -32,9 +32,9 @@
   <!-- Conteneur pour afficher le sondage -->
   <div id="surveyElement"></div>
 
-  <!-- Le code JavaScript pour configurer et afficher le sondage -->
+  <!-- Script pour configurer et afficher le sondage -->
   <script>
-    // Définir le JSON pour les questions du sondage
+    // JSON du sondage avec les questions
     const json = {
       title: "Sondage Open Source",
       showProgressBar: "top",
@@ -74,7 +74,7 @@
       ]
     };
 
-    // Initialiser le sondage et l'afficher
+    // Initialiser et afficher le sondage
     const survey = new Survey.Model(json);
     $("#surveyElement").Survey({ model: survey });
   </script>
